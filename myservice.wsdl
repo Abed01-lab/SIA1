@@ -1,0 +1,33 @@
+<definitions>
+
+<types>
+   <schema targetNamespace = "http://localhost:8081/wsdl"
+      xmlns = "http://www.w3.org/2000/10/XMLSchema">
+      <element name = "ProduceName">
+         <complexType>
+            <all>
+               <element name = "name" type = "string"/>
+            </all>
+         </complexType>
+      </element>
+   </schema>
+</types>
+
+<message name="person">
+  <part name="Abed" type="xs:string"/>
+</message>
+
+<portTyp name="displayName">
+    <operation name="getName">
+        <input message="person"/>
+    </operation>
+</portType>
+
+<binding type="displayName" name="operation1">
+    <soap:binding style="document" transport="http://localhost:8081/wsdl">
+    <operation>
+        <soap:operation soapAction="" />
+    </operation>
+</binding>
+
+</definitions>
