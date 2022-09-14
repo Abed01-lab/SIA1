@@ -1,14 +1,16 @@
 import axios from "axios";
 import dotenv from "dotenv";
 
+dotenv.config();
+
 function buildMail() {}
 
-async function getCountry(ip: String) {
+export async function getCountry(ip: String) {
   const res = await axios.get("http://ip-api.com/json/" + ip);
   return res.data.country;
 }
 
-async function getGender(name: String, country: String, ip: String) {
+export async function getGender(name: String, country: String, ip: String) {
   const options = {
     method: "GET",
     url: "https://gender.p.rapidapi.com/get",
@@ -39,12 +41,3 @@ async function getGender(name: String, country: String, ip: String) {
 
   return await res.data.gender;
 }
-
-async function Main() {
-  dotenv.config();
-  const country = await getCountry("94.145.15.90");
-  const gender = await getGender("Abed", country, "94.145.15.90");
-  console.log(gender);
-}
-
-Main();
