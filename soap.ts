@@ -28,6 +28,7 @@ const myService = {
     },
   },
 };
+
 const xml = require("fs").readFileSync("soap.wsdl", "utf8");
 app.use(
   bodyParser.raw({
